@@ -1,63 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
+  include('View/head.html');
+  include('View/nav.html');
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Location GSI</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-    <!-- retour à la page principale -->
-      <a class="navbar-brand" href="index.html">Location GSI</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <!-- Espace gestionnaire -->
-            <a class="nav-link" href="about.html">Gestionnaire</a>
-          </li>
-          <li class="nav-item">
-            <!-- Espace de reservation -->
-            <a class="nav-link" href="services.html">Reservation</a>
-          </li>
-          <li class="nav-item">
-             <!-- info entreprise -->  
-            <a class="nav-link" href="services.html">Nous connaitre</a>
-          </li>
-          <li class="nav-item">
-            <!-- Page de contact -->
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-             <!-- Page de inscription -->
-            <a class="nav-link" href="inscription.html">Inscription</a>
-          </li>     
-          <li class="nav-item">
-             <!-- Page de connexion -->
-            <a class="nav-link" href="connexion.html">Connexion</a>
-          </li>    
-        </ul>
-      </div>
-    </div>
-  </nav>
+?>
 
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -178,18 +124,8 @@
    </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  <?php
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    include('View/footer.html');
 
-</body>
-
-</html>
+  ?>
