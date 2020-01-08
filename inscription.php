@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/inscription.css">
 
 </head>
- 
+
 <body>
 
   <!-- Navigation -->
@@ -64,6 +64,8 @@
 
 
 
+
+
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
@@ -74,14 +76,14 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Nom *" type="text">
+            <input name="nom" class="form-control" placeholder="Nom *" type="text">
         </div> <!-- form-group// -->
 
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Prénom *" type="text">
+            <input name="prenom" class="form-control" placeholder="Prénom *" type="text">
         </div> <!-- form-group// -->
 
         <div class="form-group input-group">
@@ -157,12 +159,25 @@
     </div> <!-- form-group// -->
    <!-- bouton de validation -->
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" name="valider" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->
     <p class="text-center">Have an account? <a href="">Log In</a> </p>
 </form>
 </article>
 </div>
+
+
+<?php
+include('model/connexionBDD.php');
+
+
+if (isset ($_POST['valider'])){
+                $nom=$_POST['nom'];
+                $prenom=$_POST['prenom'];
+                $c->exec("INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES('',$nom, $prenom,'','','')");
+            }
+
+?>
 
   <!-- /.container -->
 
