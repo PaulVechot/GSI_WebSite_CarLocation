@@ -3,46 +3,6 @@
 <?php $title = 'Location GSI - Accueil'; ?>
 <?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css"; ?>
 
-<!-- On charge dans un buffer un gros contenu le menu -->
-<?php ob_start(); ?>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-  <!-- retour à la page principale -->
-    <a class="navbar-brand" href="index.php">Location GSI</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <!-- Espace gestionnaire -->
-          <a class="nav-link" href="/GSI_WebSite_CarLocation/gestionnaire.php">Gestionnaire</a>
-        </li>
-        <li class="nav-item">
-          <!-- Espace de reservation -->
-          <a class="nav-link" href="reservation.php">Reservation</a>
-        </li>
-        <li class="nav-item">
-           <!-- info entreprise -->
-          <a class="nav-link" href="nousConnaitre.php">Nous connaitre</a>
-        </li>
-        <li class="nav-item">
-          <!-- Page de contact -->
-          <a class="nav-link" href="contact.php">Contact</a>
-        </li>
-        <li class="nav-item">
-           <!-- Page de inscription -->
-          <a class="nav-link" href="inscription.php">Inscription</a>
-        </li>
-        <li class="nav-item">
-           <!-- Page de connexion -->
-          <a class="nav-link" href="connexion.php">Connexion</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<?php $menu = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -162,5 +122,6 @@
    </div>
   </div>
 <?php $content = ob_get_clean(); ?>
+
 <!-- On recupère la page template pour al chargé avec les informations spécifiques -->
 <?php require('template.php'); ?>

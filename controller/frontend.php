@@ -2,8 +2,14 @@
 
 require('model/frontend.php');
 
-function displayhome()
+function displayHome()
 {
 
     require('view/indexView.php');
+}
+
+function displayInscription()
+{
+
+    require('view/inscriptionView.php');
 }
