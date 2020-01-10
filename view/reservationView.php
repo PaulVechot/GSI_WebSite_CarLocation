@@ -1,6 +1,6 @@
 <!-- On complete ici la page avec "parametre" manquant de la page index.fr -->
 
-<?php $title = 'Location GSI - Accueil'; ?>
+<?php $title = 'Location GSI - Reservation'; ?>
 <?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css"; ?>
 
 

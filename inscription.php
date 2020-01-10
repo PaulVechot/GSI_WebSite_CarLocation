@@ -2,4 +2,6 @@
 require('controller/frontend.php');
 
 displayInscription();
+
+
 ?>

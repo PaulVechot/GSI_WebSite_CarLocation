@@ -102,6 +102,20 @@
   </form>
   </article>
 </div>
+<?php
+
+try {
+  errorManager();
+  if (isset ($_POST['valider'])){
+   $client = array('nom' => $_POST['nom'],'prenom' => $_POST['prenom'] );
+   addClient($client)
+ }
+} catch (Exception $e) {
+ echo 'Erreur : ' . $e->getMessage();
+}
+ ?>
+
+
 <?php $content = ob_get_clean(); ?>
 
 <!-- On recupère la page template pour al chargé avec les informations spécifiques -->
