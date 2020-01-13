@@ -1,11 +1,17 @@
 <?php
-
+  //PC Paul configuration
 	$host= "localhost";
 	$username= "root";
-	$password= "";
+	$password= "root";
 	$bdd= "locationgsi";
-	$port= 8889;
+	$port= 3306;
 
+	//Laptop Paul configuration
+	// $host= "localhost";
+	// $username= "root";
+	// $password= "azerty";
+	// $bdd= "locationgsi";
+	// $port= 8889;
 //creation Database connexion
 $c = new mysqli ($host, $username, $password, $bdd, $port);
 

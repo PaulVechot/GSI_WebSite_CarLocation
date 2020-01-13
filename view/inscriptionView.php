@@ -27,72 +27,72 @@
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="" class="form-control" placeholder="Date de naissance *" type="text">
+              <input name="dateNais" class="form-control" placeholder="Date de naissance *" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                </div>
-              <input name="" class="form-control" placeholder="Adresse mail *" type="email">
+              <input name="email" class="form-control" placeholder="Adresse mail *" type="email">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		  <div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="" class="form-control" placeholder="Adresse" type="text">
+          <input name="adresse" class="form-control" placeholder="Adresse" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
   		      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
               </div>
-              <input name="" class="form-control" placeholder="Complément d'adresse" type="text">
+              <input name="complementAdresse" class="form-control" placeholder="Complément d'adresse" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="" class="form-control" placeholder="Code postal" type="text">
+          <input name="codePostal" class="form-control" placeholder="Code postal" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="" class="form-control" placeholder="Ville" type="text">
+          <input name="ville" class="form-control" placeholder="Ville" type="text">
           </div> <!-- form-group// -->
 
       <div class="form-group input-group">
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
   		</div>
-  		<select class="custom-select" style="max-width: 120px;">
-  		    <option selected="">+33</option>
-  		    <option value="1">+34</option>
-  		    <option value="2">+41</option>
-  		    <option value="3">+39</option>
-          <option value="3">+32</option>
-          <option value="3">+352</option>
-          <option value="3">+377</option>
-          <option value="3">+49</option>
+  		<select name="indicPays"class="custom-select" style="max-width: 120px;">
+  		    <option selected="33">+33</option>
+  		    <option value="34">+34</option>
+  		    <option value="41">+41</option>
+  		    <option value="39">+39</option>
+          <option value="32">+32</option>
+          <option value="352">+352</option>
+          <option value="377">+377</option>
+          <option value="49">+49</option>
   		</select>
-      	<input name="" class="form-control" placeholder="Téléphone" type="text">
+      	<input name="tel" class="form-control" placeholder="Téléphone" type="text">
       </div> <!-- form-group// -->
 
       <div class="form-group input-group">
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
   		</div>
-          <input class="form-control" placeholder="Mot de passe" type="password">
+          <input name="motDePasse" class="form-control" placeholder="Mot de passe" type="password">
       </div> <!-- form-group// -->
       <div class="form-group input-group">
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
   		</div>
-          <input class="form-control" placeholder="Repéter mot de passe" type="password">
+          <input name="motDePasse1" class="form-control" placeholder="Repéter mot de passe" type="password">
       </div> <!-- form-group// -->
      <!-- bouton de validation -->
       <div class="form-group">
@@ -102,18 +102,6 @@
   </form>
   </article>
 </div>
-<?php
-
-try {
-  errorManager();
-  if (isset ($_POST['valider'])){
-   $client = array('nom' => $_POST['nom'],'prenom' => $_POST['prenom'] );
-   addClient($client)
- }
-} catch (Exception $e) {
- echo 'Erreur : ' . $e->getMessage();
-}
- ?>
 
 
 <?php $content = ob_get_clean(); ?>
