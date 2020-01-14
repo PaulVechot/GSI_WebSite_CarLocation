@@ -5,9 +5,14 @@ DROP TABLE IF EXISTS Client ;
 CREATE TABLE Client (id_client BIGINT AUTO_INCREMENT NOT NULL,
 nom_client VARCHAR(20),
 prenom_client VARCHAR(20),
-type_client VARCHAR(10),
-telephone_client VARCHAR(15),
+birth_date Date,
 email_client VARCHAR(30),
+adress_client VARCHAR (50),
+adress_complement VARCHAR(30),
+code_postal VARCHAR (5),
+ville VARCHAR (5),
+telephone_client VARCHAR(15),
+password VARCHAR (20),
 PRIMARY KEY (id_client));
 
 DROP TABLE IF EXISTS Moyen_paiement ;
