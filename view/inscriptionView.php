@@ -8,19 +8,19 @@
   	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
   	<p class="text-center">Réservez dès maintenant avec votre compte gratuit</p>
 
-      <form>
+      <form method="post">
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="nom" class="form-control" placeholder="Nom *" type="text">
+              <input name="nom" class="form-control" placeholder="Nom *" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="prenom" class="form-control" placeholder="Prénom *" type="text">
+              <input name="prenom" class="form-control" placeholder="Prénom *" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
@@ -34,7 +34,7 @@
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                </div>
-              <input name="email" class="form-control" placeholder="Adresse mail *" type="email">
+              <input name="email" class="form-control" placeholder="Adresse mail *" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
@@ -86,7 +86,7 @@
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
   		</div>
-          <input name="motDePasse" class="form-control" placeholder="Mot de passe" type="password">
+          <input name="motDePasse" class="form-control" placeholder="Mot de passe *" type="password">
       </div> <!-- form-group// -->
       <div class="form-group input-group">
       	<div class="input-group-prepend">

@@ -1,18 +1,21 @@
 <?php
 
-include 'conf.php';
+require('model/conf.php');
 
-function addClient($client){
 
-	$c = $bdd->prepare('INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0, :nom_client, :prenom_client, :type_client, :telephone_client,	:email_client)');
-	try {
-		$c->execute($client);
-	} catch (\Exception $e) {
-
-	}
-
+function addClient($c, $client){
+	logger('model.addclient');
+	$req = $c->prepare('INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(:nom_client, :prenom_client, :type_client, :telephone_client, :email_client)');
+	$req->execute($client);
+  logger('model.addclient');
 }
 
+function addClient2($client){
+	logger('model.addclient');
+//	$c = $bdd->prepare();
+	$c->execute("INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0,$nom_client, $prenom_client, 0, $telephone_client, 0)");
+  logger('model.addclient');
+}
 
 
 function addClient1($nom, $prenom, $type, $tel, $email){
