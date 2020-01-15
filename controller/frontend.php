@@ -2,7 +2,7 @@
 
 <?php
 require_once('model/frontend.php');
-
+//Fonction d elog teporaire pour avoir une trace supllémentaire lors du débuggage
 function logger($log){
   $fichierAdresse = './log.txt';
   if (file_exists($fichierAdresse)) {
@@ -16,65 +16,42 @@ function logger($log){
   }
 }
 
-
 function displayIndex(){
 
     require('view/indexView.php');
 }
 
-// function errorManager(){
-//   set_error_handler(function($niveau, $message, $fichier, $ligne){
-//     echo 'Erreur : ' .$message. '<br>';
-//     echo 'Niveau de l\'erreur : ' .$niveau. '<br>';
-//     echo 'Erreur dans le fichier : ' .$fichier. '<br>';
-//     echo 'Emplacement de l\'erreur : ' .$ligne. '<br>';
-// }
-function inscriptionVerif($value='')
-{
-  // code...
-}
-
+//PARTIE INSCRIPTION
 function displayInscription(){
 
-    require_once('view/inscriptionView.php');
-    //logger($_POST['nom']);
-    //on récupère les variables on le smet dans le tableau client pour l'ajouter den bas epar la suite avec la fonction addClient
-    if (isset ($_POST['valider'])){
-    $client = array(
-                   'nom_client' => $_POST['nom'],
-                   'prenom_client' => $_POST['prenom'],
-                   //'dateNais' => $_POST['dateNais'],
-                   'email_client' => $_POST['email'],
-                   //'adresse' => $_POST['adresse'],
-                   //'complementAdresse' => $_POST['complementAdresse'],
-                   //'code_postal' => $_POST['codePostal'],
-                  // 'mot_de_passe' => $_POST['motDePasse'],
-                   'telephone_client' => $_POST['indicPays'] . $_POST['tel']
-                   );
-    logger('ajout client: '. $client);
-    addClient($client);
-
+  require_once('view/inscriptionView.php');
+  //on récupère les variables on les met dans le tableau client pour l'ajouter den bas epar la suite avec la fonction addClient
+  if (isset ($_POST['valider'])){
+  $client = array(
+                 'nom_client' => $_POST['nom'],
+                 'prenom_client' => $_POST['prenom'],
+                 //'dateNais' => $_POST['dateNais'],
+                 'email_client' => $_POST['email'],
+                 //'adresse' => $_POST['adresse'],
+                 //'complementAdresse' => $_POST['complementAdresse'],
+                 //'code_postal' => $_POST['codePostal'],
+                // 'mot_de_passe' => $_POST['motDePasse'],
+                 'telephone_client' => $_POST['indicPays'] . $_POST['tel']);
   }
- //  require('view/inscriptionView.php');
- //  logger($_POST['nom']);
- //  //on récupère les variables on le smet dans le tableau client pour l'ajouter den bas epar la suite avec la fonction addClient
- //  if (isset ($_POST['valider'])){
- //  $client = array(
- //                 $nom_client => $_POST['nom'],
- //                 $prenom_client => $_POST['prenom'],
- //                 $dateNais => $_POST['dateNais'],
- //                 $email_client => $_POST['email'],
- //                 $adresse => $_POST['adresse'],
- //                 $complementAdresse => $_POST['complementAdresse'],
- //                 $code_postal => $_POST['codePostal'],
- //                 $mot_de_passe => $_POST['motDePasse'],
- //                 $telephone_client => $_POST['indicPays'] . $_POST['tel']
- //                 );
- //  logger($client);
- //  addClient2($client);
- //
- // }
 }
+
+function displayInscriptionSucess(){
+
+  require_once('view/inscriptionFailView.php');
+
+}
+
+function displayInscriptionFail(){
+
+  require_once('view/inscriptionSucessView.php');
+
+}
+
 function displayConnexion(){
 
     require('view/connexionView.php');
@@ -90,6 +67,12 @@ function displayNousConnaitre(){
 
 }
 
+function displayContact(){
+
+    require('view/contactView.php');
+}
+
+//PARTIE RESERVATION
 function displayReservation(){
 
     require('view/reservationView.php');
@@ -100,9 +83,9 @@ function displayReservationCar(){
     require('view/reservationCarView.php');
 }
 
-function displayContact(){
+function displayReservationInterface(){
 
-    require('view/contactView.php');
+    require('view/reservationInterfaceView.php');
 }
 
 ?>

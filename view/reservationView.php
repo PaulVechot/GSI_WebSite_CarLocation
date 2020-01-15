@@ -23,10 +23,10 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
   //logger('getallcar fetch in while\n\n'. $d)?>
   <div class="col-lg-6 portfolio-item">
    <div class="card h-100">
-     <a href="reservationCar.php?vehicule=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
+     <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
      <div class="card-body">
        <h4 class="card-title">
-         <a href="reservationCar.php?vehicule=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
+         <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
        </h4>
        <p class="card-text"><?php echo $dAllCar['description']?></p>
      </div>

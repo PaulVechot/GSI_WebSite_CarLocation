@@ -5,13 +5,13 @@
 <?php ob_start(); ?>
 
 </br>
-</br> 
+</br>
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 600px;">
   	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
   	<p class="text-center">Réservez dès maintenant avec votre compte gratuit</p>
 
-      <form method="post">
+      <form action="reservation.php?action=creation?>" method="post">
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -99,7 +99,7 @@
       </div> <!-- form-group// -->
      <!-- bouton de validation -->
       <div class="form-group">
-          <button type="submit" name="valider" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" name="valider" class="btn btn-primary btn-block"> Create Account  </button>
       </div> <!-- form-group// -->
       <p class="text-center">Have an account? <a href="">Log In</a> </p>
   </form>
