@@ -90,9 +90,14 @@ function displayNousConnaitre(){
 
 }
 
-function displayReveration(){
+function displayReservation(){
 
     require('view/reservationView.php');
+}
+
+function displayReservationCar(){
+
+    require('view/reservationCarView.php');
 }
 
 function displayContact(){

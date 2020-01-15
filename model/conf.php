@@ -17,11 +17,11 @@
 
 
 	//Laptop Fourat configuration
-	$host= "localhost";
-	$username= "root";
-	$password= "";
-	$bdd= "locationgsi";
-	$port= 8888;
+	// $host= "localhost";
+	// $username= "root";
+	// $password= "";
+	// $bdd= "locationgsi";
+	// $port= 8888;
 
 //creation Database connexion
 try {

@@ -1,7 +1,9 @@
 <!-- On complete ici la page avec "parametre" manquant de la page index.fr -->
 
-<?php $title = 'Location GSI - Reservation'; ?>
-<?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css"; ?>
+<?php
+require_once('model/frontend.php');
+$title = 'Location GSI - Reservation';
+$customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css"; ?>
 
 
 <?php ob_start(); ?>
@@ -10,82 +12,30 @@
 
 <!-- Page Heading -->
 <h1 class="mt-4 mb-3">Réservation</h1>
- <div class="row">
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project One</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-       </div>
+<div class="row">
+<!-- Petit espace rajouté vitre fait -->
+</br>
+</br>
+  <!-- Un affichage d'une voiture -->
+  <?php
+  $res = getAllCar();
+  while ($d = $res->fetch()){
+  //logger($res)?>
+  <div class="col-lg-6 portfolio-item">
+   <div class="card h-100">
+     <a href="reservationCar.php?vehicule=<?php echo $d['id_vehicule']?>"><img class="card-img-top" src="<?php echo $d['lien_image']?>" alt=""></a>
+     <div class="card-body">
+       <h4 class="card-title">
+         <a href="reservationCar.php?vehicule=<?php echo $d['id_vehicule']?>"><?php echo $d['marque'] ." ". $d['modele'] ." ". $d['couleur'] ?></a>
+       </h4>
+       <p class="card-text"><?php echo $d['description']?></p>
      </div>
    </div>
+  </div>
+  <?php }?>
+</div>
 
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project Two</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-       </div>
-     </div>
-   </div>
-
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project Three</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-       </div>
-     </div>
-   </div>
-
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project Four</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-       </div>
-     </div>
-   </div>
-
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project Five</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-       </div>
-     </div>
-   </div>
-   
-   <div class="col-lg-6 portfolio-item">
-     <div class="card h-100">
-       <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-       <div class="card-body">
-         <h4 class="card-title">
-           <a href="#">Project Six</a>
-         </h4>
-         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-       </div>
-     </div>
-   </div>
- </div>
- <!-- /.row -->
-
- <!-- Pagination -->
+ <!-- Pagination
  <ul class="pagination justify-content-center">
    <li class="page-item">
      <a class="page-link" href="#" aria-label="Previous">
@@ -109,7 +59,8 @@
      </a>
    </li>
  </ul>
-</div>
+
+-->
  <!-- /.container -->
  <?php $content = ob_get_clean(); ?>
 
