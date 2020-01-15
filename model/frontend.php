@@ -15,7 +15,7 @@ function getAllCar(){
 	}
 
 	function getCar($id){
-  	logger($id);
+  	//logger($id);
 		$req = $GLOBALS['c']->prepare('SELECT * FROM vehicule WHERE id_vehicule = :id');
 		$req->execute(['id' => $id]);
 		$res = $req->fetch();
