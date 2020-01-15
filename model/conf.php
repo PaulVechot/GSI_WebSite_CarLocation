@@ -15,6 +15,14 @@
 	// $bdd= "locationgsi";
 	// $port= 8889;
 
+
+	//Laptop Fourat configuration
+	$host= "localhost";
+	$username= "root";
+	$password= "";
+	$bdd= "locationgsi";
+	$port= 8888;
+
 //creation Database connexion
 try {
     $c = new PDO($dsn, $username, $password);
