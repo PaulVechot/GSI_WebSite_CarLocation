@@ -1,39 +1,23 @@
 <?php
 
-require('model/conf.php');
+require_once('conf.php');
 
-
-function addClient($c, $client){
-	logger('model.addclient');
-	$req = $c->prepare('INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(:nom_client, :prenom_client, :type_client, :telephone_client, :email_client)');
+function addClient($client){
+	$req = $GLOBALS['c']->prepare('INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0, :nom_client, :prenom_client, 0, :telephone_client, :email_client)');
 	$req->execute($client);
-  logger('model.addclient');
 }
 
-function addClient2($client){
-	logger('model.addclient');
-//	$c = $bdd->prepare();
-	$c->execute("INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0,$nom_client, $prenom_client, 0, $telephone_client, 0)");
-  logger('model.addclient');
-}
+function getCarByAgency($agency){
 
+	//$agency = 1 => agence 1
+	//$agency = 2 => agence 2
+	//$agency = 3 => agence 3
+	//$agency = 4 => agence 1 et agence 2
+	//$agency = 5 => agence 1 et agence 3
+	//$agency = 6 => agence 2 et agence 3
 
-function addClient1($nom, $prenom, $type, $tel, $email){
-  if (empty($type) Or empty($email) or empty($tel)) {
-    $type = 'clientTest';
-    $email = 'clientTest';
-    $tel = 'clientTest';
-  }
-  $c->exec("INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(1,$nom, $prenom,$type,$tel,$email)");
-}
-
-function addCar($nom, $prenom, $type, $tel, $email){
-  if (empty($type) Or empty($email) or empty($tel)) {
-    $type = 'clientTest';
-    $email = 'clientTest';
-    $tel = 'clientTest';
-  }
-  $c->exec("INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(1,$nom, $prenom,$type,$tel,$email)");
+	$req = $GLOBALS['c']->prepare('SELECT client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0, :nom_client, :prenom_client, 0, :telephone_client, :email_client)');
+	$req->execute($client);
 }
 
 ?>

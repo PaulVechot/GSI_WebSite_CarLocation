@@ -1,8 +1,11 @@
 
 <?php $title = 'Location GSI - Inscription'; ?>
-<?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/inscription.css"; ?>
+<?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/.css"; ?>
 
 <?php ob_start(); ?>
+
+</br>
+</br> 
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 600px;">
   	<h4 class="card-title mt-3 text-center">Créer un compte</h4>

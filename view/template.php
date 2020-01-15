@@ -12,9 +12,12 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/GSI_WebSite_CarLocation/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom styles for this template -->
+
+<?php if (!empty($customPageStylesheet)) {?>
   <link href= <?= $customPageStylesheet ?> rel="stylesheet">
+  <?php
+} ?>
 
 </head>
 

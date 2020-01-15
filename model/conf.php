@@ -16,10 +16,15 @@
 	// $port= 8889;
 
 //creation Database connexion
-$c = new PDO($dsn, $username, $password);
-
+try {
+    $c = new PDO($dsn, $username, $password);
+    // set the PDO error mode to exception
+    $c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
 //verification connexion
-if ($c->connect_errno) {
-	die ("Erreur de connexion (".$c->connect_errno."): ".$c-> connect_error);
-}
+
 ?>

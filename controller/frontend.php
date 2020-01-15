@@ -1,7 +1,7 @@
 <!-- Permet de faire le lien entre le model et la view il sera appelé par la page pour l'affichge -->
 
 <?php
-require('model/frontend.php');
+require_once('model/frontend.php');
 
 function logger($log){
   $fichierAdresse = './log.txt';
@@ -36,23 +36,23 @@ function inscriptionVerif($value='')
 
 function displayInscription(){
 
-    require('view/inscriptionView.php');
+    require_once('view/inscriptionView.php');
     //logger($_POST['nom']);
     //on récupère les variables on le smet dans le tableau client pour l'ajouter den bas epar la suite avec la fonction addClient
     if (isset ($_POST['valider'])){
     $client = array(
                    'nom_client' => $_POST['nom'],
                    'prenom_client' => $_POST['prenom'],
-                   'dateNais' => $_POST['dateNais'],
+                   //'dateNais' => $_POST['dateNais'],
                    'email_client' => $_POST['email'],
-                   'adresse' => $_POST['adresse'],
-                   'complementAdresse' => $_POST['complementAdresse'],
-                   'code_postal' => $_POST['codePostal'],
-                   'mot_de_passe' => $_POST['motDePasse'],
+                   //'adresse' => $_POST['adresse'],
+                   //'complementAdresse' => $_POST['complementAdresse'],
+                   //'code_postal' => $_POST['codePostal'],
+                  // 'mot_de_passe' => $_POST['motDePasse'],
                    'telephone_client' => $_POST['indicPays'] . $_POST['tel']
                    );
-    logger($client);
-    addClient($c, $client);
+    logger('ajout client: '. $client);
+    addClient($client);
 
   }
  //  require('view/inscriptionView.php');
