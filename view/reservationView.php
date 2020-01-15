@@ -18,17 +18,17 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
 </br>
   <!-- Un affichage d'une voiture -->
   <?php
-  $res = getAllCar();
-  while ($d = $res->fetch()){
-  //logger($res)?>
+  $resAllCar = getAllCar();
+  while ($dAllCar = $resAllCar->fetch()){
+  //logger('getallcar fetch in while\n\n'. $d)?>
   <div class="col-lg-6 portfolio-item">
    <div class="card h-100">
-     <a href="reservationCar.php?vehicule=<?php echo $d['id_vehicule']?>"><img class="card-img-top" src="<?php echo $d['lien_image']?>" alt=""></a>
+     <a href="reservationCar.php?vehicule=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
      <div class="card-body">
        <h4 class="card-title">
-         <a href="reservationCar.php?vehicule=<?php echo $d['id_vehicule']?>"><?php echo $d['marque'] ." ". $d['modele'] ." ". $d['couleur'] ?></a>
+         <a href="reservationCar.php?vehicule=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
        </h4>
-       <p class="card-text"><?php echo $d['description']?></p>
+       <p class="card-text"><?php echo $dAllCar['description']?></p>
      </div>
    </div>
   </div>

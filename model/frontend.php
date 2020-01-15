@@ -10,7 +10,6 @@ function addClient($client){
 function getAllCar(){
 	$req = $GLOBALS['c']->prepare('SELECT * from vehicule');
 	$req->execute();
-
   return $req;
 	}
 
@@ -18,9 +17,9 @@ function getAllCar(){
   	//logger($id);
 		$req = $GLOBALS['c']->prepare('SELECT * FROM vehicule WHERE id_vehicule = :id');
 		$req->execute(['id' => $id]);
-		$res = $req->fetch();
-		logger($res);
-		return $res;
+		$resCar = $req->fetch();
+		//logger('getcar function response'.$res);
+		return $resCar;
 		}
 
 ?>
