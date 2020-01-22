@@ -9,6 +9,7 @@ birth_date DATE,
 email_client VARCHAR(30),
 telephone_client VARCHAR(15),
 password VARCHAR (20),
+type_client INT,
 PRIMARY KEY (id_client));
 
 DROP TABLE IF EXISTS Moyen_paiement ;
@@ -73,6 +74,7 @@ DROP TABLE IF EXISTS Connexion ;
 CREATE TABLE Connexion (id_connexion BIGINT AUTO_INCREMENT NOT NULL,
 heure_connexion DATETIME,
 heure_deconnexion DATETIME,
+id_client BIGINT,
 PRIMARY KEY (id_connexion));
 
 DROP TABLE IF EXISTS Modification ;
@@ -121,3 +123,4 @@ ALTER TABLE Tache ADD CONSTRAINT FK_Tache_id_gestionnaire FOREIGN KEY (id_gestio
 ALTER TABLE Facture ADD CONSTRAINT FK_Facture_id_reservation FOREIGN KEY (id_reservation) REFERENCES Reservation (id_reservation);
 ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
 ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_gestionnaire FOREIGN KEY (id_gestionnaire) REFERENCES Gestionnaire (id_gestionnaire);
+ALTER TABLE Connexion ADD CONSTRAINT FK_Connexion_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);

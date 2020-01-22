@@ -2,11 +2,25 @@
 
 require_once('conf.php');
 
+// CLIENT
 function addClient($client){
 	$req = $GLOBALS['c']->prepare('INSERT INTO client(id_client, nom_client, prenom_client, type_client, telephone_client,	email_client) VALUES(0, :nom_client, :prenom_client, 0, :telephone_client, :email_client)');
 	$req->execute($client);
 }
+// Connexion management
+function getClient($connexion){
+	$req = $GLOBALS['c']->prepare('SELECT id, password, type_client, nom_client, prenom_client FROM client WHERE email_client = :email_client');
+	$req->execute($connexion);
+	$resConnexion = $req->fetch();
+	return $resConnexion;
+}
+//pas terminer ajout date en bd
+	function logDate($id, $date){
+	$req = $GLOBALS['c']->prepare('INSERT INTO connexion(heure_connexion, heure_deconnexion, id_connexion) VALUES(0, :nom_client, :prenom_client, 0, :telephone_client, :email_client)');
+	$req->execute($client);
+	}
 
+// VEHICULE
 function getAllCar(){
 	$req = $GLOBALS['c']->prepare('SELECT * from vehicule');
 	$req->execute();
@@ -14,11 +28,9 @@ function getAllCar(){
 	}
 
 function getCar($id){
-	//logger($id);
 	$req = $GLOBALS['c']->prepare('SELECT * FROM vehicule WHERE id_vehicule = :id');
 	$req->execute(['id' => $id]);
 	$resCar = $req->fetch();
-	//logger('getcar function response'.$res);
 	return $resCar;
 	}
 
@@ -27,5 +39,8 @@ function getCarSameCategory($id){
 	$req->execute(['id' => $id]);
 	return $req;
 }
+
+
+
 
 ?>

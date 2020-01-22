@@ -6,22 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <? if (!empty($meta)){
-    $meta;
-  };
-
-  ?>
 
   <title><?= $title ?></title>
 
   <!-- Bootstrap core CSS -->
   <link href="/GSI_WebSite_CarLocation/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
 
-<?php if (!empty($customPageStylesheet)) {?>
-  <link href= <?= $customPageStylesheet ?> rel="stylesheet">
-  <?php
-} ?>
+  <!-- Custom styles for this template -->
+  <?php if (!empty($customPageStylesheet)) {?>
+    <link href= <?= $customPageStylesheet ?> rel="stylesheet">
+  <?php } ?>
 
 </head>
 

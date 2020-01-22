@@ -21,7 +21,7 @@ function displayIndex(){
     require('view/indexView.php');
 }
 
-//PARTIE INSCRIPTION
+// PARTIE INSCRIPTION
 function displayInscription(){
 
   require_once('view/inscriptionView.php');
@@ -40,22 +40,77 @@ function displayInscription(){
   }
 }
 
-function displayInscriptionSucess(){
+function displayInscriptionChoix(){
 
-  require_once('view/inscriptionFailView.php');
-
+  require_once('view/inscriptionChoixView.php');
 }
 
-function displayInscriptionFail(){
+function displayInscriptionProfessionnel(){
 
-  require_once('view/inscriptionSucessView.php');
-
+  require_once('view/inscriptionProfessionnelView.php');
 }
+
+function displayInscriptionParticulier(){
+
+  require_once('view/inscriptionParticulierView.php');
+}
+// FIN PARTIE INSCRIPTION
+
+// PARTIE FAIL/SUCCESS
+function displaySucess(){
+
+  require_once('view/sucessView.php');
+  if (!empty($_SESSION['nom_client']) || !empty($_SESSION['nom_client'])){
+    $personalmessage = "Bonjour " . $_SESSION['nom_client'] . $_SESSION['nom_client'] ;
+  }
+}
+
+function displayFail(){
+
+  require_once('view/failView.php');
+}
+// FIN PARTIE FAIL/SUCCESS
 
 function displayConnexion(){
 
-    require('view/connexionView.php');
+  require('view/connexionView.php');
+
+  if (empty($_POST['pseudo']) || empty($_POST['password']) ){
+    echo '<p>une erreur s\'est produite pendant votre identification.
+          Vous devez remplir tous les champs</p>
+          <p>Cliquez <a href="./connexion.php">ici</a> pour revenir</p>';
+  }
+  if (isset ($_POST['connexion'])){
+    //Verification de la connexion
+    $connexion = array(
+                   'email_client' => $_POST['inputEmail'],
+                   'password' => $_POST['inputPassword'],
+                   'type_client' => $_POST['profil']
+                 );
+    $dconnexion = getClient($connexion);
+  	if ($dconnexion['password'] == md5($_POST['inputPassword'])) // Acces OK !
+  	{
+  	    $_SESSION['nom_client'] = $dconnexion['nom_client'];
+  	    $_SESSION['prenom_client'] = $dconnexion['prenom_client'];
+  	    $_SESSION['type_client'] = $dconnexion['type_client'];
+
+    }else {?>
+      <script>
+       function redir(){self.location.href="index.php"};
+      </script>
+      <?php
+
+    }
+
+    // // Log la date de connexion
+    // date_default_timezone_set('Europe/France');
+    // // Then call the date functions
+    // $date = date('Y-m-d H:i:s');
+    // logDate($_POST['id_client'], $date);
+
+  }
 }
+
 function displayGestionnaire(){
 
     require('view/gestionnaireView.php');
@@ -64,7 +119,6 @@ function displayGestionnaire(){
 function displayNousConnaitre(){
 
     require('view/nousConnaitreView.php');
-
 }
 
 function displayContact(){
@@ -72,7 +126,7 @@ function displayContact(){
     require('view/contactView.php');
 }
 
-//PARTIE RESERVATION
+// PARTIE RESERVATION
 function displayReservation(){
 
     require('view/reservationView.php');
@@ -87,5 +141,5 @@ function displayReservationInterface(){
 
     require('view/reservationInterfaceView.php');
 }
-
+// FIN PARTIE RESERVATION
 ?>

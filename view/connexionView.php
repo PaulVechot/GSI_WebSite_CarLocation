@@ -12,25 +12,42 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Welcome back!</h3>
-              <form>
+              <h3 class="login-heading mb-4">Connectez-vous!</h3>
+              <form action="connexion.php?action=connexion" method="post">
+
+                <!-- choix profil user -->
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="profil" id="particulier" autocomplete="off" checked> Particulier
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="profil" id="professionnel" autocomplete="off"> Professionnel
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="profil" id="administrateur" autocomplete="off"> Administrateur
+                  </label>
+                </div>
+                  <!--petit espace pour aérer -->
+                <br>
+                <br>
+                  <!-- mot de passe et connexion -->
                 <div class="form-label-group">
                   <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
+                  <label for="inputEmail">Adresse email</label>
                 </div>
 
                 <div class="form-label-group">
                   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
+                  <label for="inputPassword">Mode de passe</label>
                 </div>
 
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
+                  <label class="custom-control-label" for="customCheck1">Se souvenir du mot de passe</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" name="connexion">Connexion</button>
                 <div class="text-center">
-                  <a class="small" href="#">Forgot password?</a></div>
+                  <a class="small" href="#">Mot de passe oublié?</a></div>
               </form>
             </div>
           </div>

@@ -54,7 +54,7 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
     ?>
     <div class="col-md-3 col-sm-6 mb-4">
       <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dCarSameCategory['id_vehicule']?>">
-        <img class="img-fluid" src="<?php echo$dCarSameCategory['lien_image']?>" alt="">
+        <img class="img-fluid" src="<?php echo $dCarSameCategory['lien_image']?>" alt="">
       </a>
     </div>
     <?php

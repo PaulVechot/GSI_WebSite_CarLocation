@@ -10,30 +10,33 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
 <!-- Page Content -->
 <div class="container">
 
-<!-- Page Heading -->
-<h1 class="mt-4 mb-3">Réservation</h1>
-<div class="row">
-<!-- Petit espace rajouté vitre fait -->
-</br>
-</br>
-  <!-- Un affichage d'une voiture -->
-  <?php
-  $resAllCar = getAllCar();
-  while ($dAllCar = $resAllCar->fetch()){
-  //logger('getallcar fetch in while\n\n'. $d)?>
-  <div class="col-lg-6 portfolio-item">
-   <div class="card h-100">
-     <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
-     <div class="card-body">
-       <h4 class="card-title">
-         <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
-       </h4>
-       <p class="card-text"><?php echo $dAllCar['description']?></p>
+  <!-- Page Heading -->
+  <h1 class="mt-4 mb-3">Réservation</h1>
+  <div class="row">
+    <!-- Petit espace rajouté vitre fait -->
+    </br>
+    </br>
+    <!-- Un affichage d'une voiture -->
+    <?php
+    $resAllCar = getAllCar();
+    while ($dAllCar = $resAllCar->fetch()){
+    //logger('getallcar fetch in while\n\n'. $d)?>
+    <div class="col-lg-6 portfolio-item">
+     <div class="card h-100">
+       <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
+       <div class="card-body">
+         <h4 class="card-title">
+           <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
+         </h4>
+         <p class="card-text"><?php echo $dAllCar['description']?></p>
+       </div>
      </div>
-   </div>
+    </div>
+    <?php }?>
   </div>
-  <?php }?>
 </div>
+
+
 
  <!-- Pagination
  <ul class="pagination justify-content-center">

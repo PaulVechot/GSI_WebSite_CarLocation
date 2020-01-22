@@ -1,5 +1,5 @@
 
-<?php $title = 'Location GSI - Inscription'; ?>
+<?php $title = 'Location GSI - Inscription - Professionnel '; ?>
 <?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/.css"; ?>
 
 <?php ob_start(); ?>
@@ -11,7 +11,7 @@
   	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
   	<p class="text-center">Réservez dès maintenant avec votre compte gratuit</p>
 
-      <form action="reservation.php?action=creation?>" method="post">
+      <form action="inscription.php?action=creation" method="post">
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -99,9 +99,9 @@
       </div> <!-- form-group// -->
      <!-- bouton de validation -->
       <div class="form-group">
-        <button type="submit" name="valider" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="submit" name="valider" class="btn btn-primary btn-block">Création du compte  </button>
       </div> <!-- form-group// -->
-      <p class="text-center">Have an account? <a href="">Log In</a> </p>
+      <p class="text-center">J'ai déjà un compte!<a href="connexion.php">  Connexion</a> </p>
   </form>
   </article>
 </div>
