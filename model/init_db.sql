@@ -5,14 +5,11 @@ DROP TABLE IF EXISTS Client ;
 CREATE TABLE Client (id_client BIGINT AUTO_INCREMENT NOT NULL,
 nom_client VARCHAR(20),
 prenom_client VARCHAR(20),
-birth_date Date,
+birth_date DATE,
 email_client VARCHAR(30),
-adress_client VARCHAR (50),
-adress_complement VARCHAR(30),
-code_postal VARCHAR (5),
-ville VARCHAR (5),
 telephone_client VARCHAR(15),
 password VARCHAR (20),
+type_client INT,
 PRIMARY KEY (id_client));
 
 /* DROP TABLE IF EXISTS Pro ;
@@ -48,11 +45,13 @@ CREATE TABLE Vehicule (id_vehicule BIGINT AUTO_INCREMENT NOT NULL,
 immatriculation VARCHAR(20),
 marque VARCHAR(30),
 modele VARCHAR(40),
-categorie VARCHAR(15), /*Citadine, Routière, Luxe, Utilitaire, transport*/
+categorie VARCHAR(15),
+description VARCHAR(1000),
+lien_image VARCHAR(300),
 couleur VARCHAR(15),
-id_reservation BIGINT, 
-description VARCHAR (200),
+id_reservation BIGINT,
 prix INT,
+
 PRIMARY KEY (id_vehicule));
 
 DROP TABLE IF EXISTS Gestionnaire ;
@@ -89,6 +88,7 @@ DROP TABLE IF EXISTS Connexion ;
 CREATE TABLE Connexion (id_connexion BIGINT AUTO_INCREMENT NOT NULL,
 heure_connexion DATETIME,
 heure_deconnexion DATETIME,
+id_client BIGINT,
 PRIMARY KEY (id_connexion));
 
 DROP TABLE IF EXISTS Modification ;
@@ -137,3 +137,4 @@ ALTER TABLE Tache ADD CONSTRAINT FK_Tache_id_gestionnaire FOREIGN KEY (id_gestio
 ALTER TABLE Facture ADD CONSTRAINT FK_Facture_id_reservation FOREIGN KEY (id_reservation) REFERENCES Reservation (id_reservation);
 ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
 ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_gestionnaire FOREIGN KEY (id_gestionnaire) REFERENCES Gestionnaire (id_gestionnaire);
+ALTER TABLE Connexion ADD CONSTRAINT FK_Connexion_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
