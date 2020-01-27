@@ -15,11 +15,23 @@ telephone_client VARCHAR(15),
 password VARCHAR (20),
 PRIMARY KEY (id_client));
 
+/* DROP TABLE IF EXISTS Pro ;
+CREATE TABLE Pro (id_pro BIGINT AUTO_INCREMENT NOT NULL,
+rs_pro VARCHAR(20),
+email_pro VARCHAR(30),
+adress_pro VARCHAR (50),
+adress_complement_pro VARCHAR(30),
+code_postal_pro VARCHAR (5),
+ville_pro VARCHAR (5),
+telephone_pro VARCHAR(15),
+password_pro VARCHAR (20),
+PRIMARY KEY (id_pro)); */
+
 DROP TABLE IF EXISTS Moyen_paiement ;
 CREATE TABLE Moyen_paiement (id_moyen_paiement BIGINT AUTO_INCREMENT NOT NULL,
 type_moyen_paiement VARCHAR(20),
 numero_moyen_paiement VARCHAR(35),
-Id_client BIGINT,
+id_client BIGINT,
 PRIMARY KEY (id_moyen_paiement));
 
 DROP TABLE IF EXISTS Adresse ;
@@ -28,24 +40,26 @@ adress_client VARCHAR (50),
 adress_complement VARCHAR(30),
 code_postal VARCHAR (5),
 ville VARCHAR (5),
-Id_client BIGINT,
+id_client BIGINT,
 PRIMARY KEY (id_adresse));
 
 DROP TABLE IF EXISTS Vehicule ;
 CREATE TABLE Vehicule (id_vehicule BIGINT AUTO_INCREMENT NOT NULL,
-immatriculation VARCHAR(15),
-marque VARCHAR(10),
-modele VARCHAR(10),
-categorie VARCHAR(12),
-couleur VARCHAR(10),
-Id_reservation BIGINT,
+immatriculation VARCHAR(20),
+marque VARCHAR(30),
+modele VARCHAR(40),
+categorie VARCHAR(15), /*Citadine, Routière, Luxe, Utilitaire, transport*/
+couleur VARCHAR(15),
+id_reservation BIGINT, 
+description VARCHAR (200),
+prix INT,
 PRIMARY KEY (id_vehicule));
 
 DROP TABLE IF EXISTS Gestionnaire ;
 CREATE TABLE Gestionnaire (id_gestionnaire BIGINT AUTO_INCREMENT NOT NULL,
 nom_gestionnaire VARCHAR(20),
 prenom_gestionnaire VARCHAR(20),
-code_gestionnaire VARCHAR(5),
+code_gestionnaire VARCHAR(20),
 telephone_gestionnaire VARCHAR(15),
 email_gestionnaire VARCHAR(30),
 PRIMARY KEY (id_gestionnaire));
@@ -54,14 +68,14 @@ DROP TABLE IF EXISTS Tache ;
 CREATE TABLE Tache (id_tache BIGINT AUTO_INCREMENT NOT NULL,
 nom_tache VARCHAR(12),
 statut_tache VARCHAR(10),
-Id_gestionnaire BIGINT,
+id_gestionnaire BIGINT,
 PRIMARY KEY (id_tache));
 
 DROP TABLE IF EXISTS Facture ;
 CREATE TABLE Facture (id_facture BIGINT AUTO_INCREMENT NOT NULL,
 date_facture DATE,
 total_ht FLOAT(10),
-Id_reservation BIGINT,
+id_reservation BIGINT,
 PRIMARY KEY (id_facture));
 
 DROP TABLE IF EXISTS Espace_perso ;
@@ -103,8 +117,8 @@ km_depart_ FLOAT(15),
 km_retour FLOAT(15),
 prix_journalier BIGINT(8),
 montant_accompte FLOAT(10),
-Id_client BIGINT,
-Id_gestionnaire BIGINT,
+id_client BIGINT,
+id_gestionnaire BIGINT,
 PRIMARY KEY (id_reservation));
 
 DROP TABLE IF EXISTS Historique ;
