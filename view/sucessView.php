@@ -30,12 +30,9 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/connexionSucess.css
   </div>
 </div>
 
-
 <!-- Redirection automatique au bout d'un certain temps -->
-<script>
- function redir(){self.location.href="index.php";}
- setTimeout(redir,2000)
-</script>
+<?php header('Refresh: 3; URL=http://yoursite.com/page.php');?>
+
 
 <?php $content = ob_get_clean(); ?>
 

@@ -8,10 +8,10 @@
 </br>
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 600px;">
-  	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
+  	<h4 class="card-title mt-3 text-center">Créer un compte Particulier</h4>
   	<p class="text-center">Réservez dès maintenant avec votre compte gratuit</p>
 
-      <form action="inscription.php?action=creation" method="post">
+      <form method="post">
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -30,14 +30,14 @@
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="dateNais" class="form-control" placeholder="Date de naissance *" type="text">
+              <input name="birth_date" class="form-control" placeholder="Date de naissance *" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                </div>
-              <input name="email" class="form-control" placeholder="Adresse mail *" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              <input name="email_client" class="form-control" placeholder="Adresse mail *" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
@@ -89,13 +89,13 @@
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
   		</div>
-          <input name="motDePasse" class="form-control" placeholder="Mot de passe *" type="password">
+          <input name="motDePasse" class="form-control" placeholder="Mot de passe *" type="password" required pattern=".{6,}">
       </div> <!-- form-group// -->
       <div class="form-group input-group">
       	<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
   		</div>
-          <input name="motDePasse1" class="form-control" placeholder="Repéter mot de passe" type="password">
+          <input name="motDePasse1" class="form-control" placeholder="Repéter mot de passe" type="password" required pattern=".{6,}">
       </div> <!-- form-group// -->
      <!-- bouton de validation -->
       <div class="form-group">

@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="stylesheet" href="/GSI_WebSite_CarLocation/public/font-awesome-4.7.0/css/font-awesome.min.css">
 
   <title><?= $title ?></title>
 
@@ -22,7 +28,7 @@
 <body>
 <!-- Navbar pour les pages web du site. Elle peut etre different selon ce qui est envoyé en parametre. Si le menu n'a pas été déclaré alors on affiche celui de base-->
 
-<?php if (empty($menu)) {?>
+<?php if (!isset($_SESSION['user_type'])) {  ?>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
     <!-- retour à la page principale -->
@@ -32,9 +38,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
-          <!-- Espace gestionnaire -->
-          <li class="nav-item"><a class="nav-link" href="gestionnaire.php">Gestionnaire</a></li>
 
           <!-- Espace de reservation -->
           <li class="nav-item"><a class="nav-link" href="reservation.php">Reservation</a></li>
@@ -55,6 +58,69 @@
       </div>
     </div>
   </nav>
+<?php
+}
+elseif($_SESSION['user_type'] != 0) {?>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+    <!-- retour à la page principale -->
+      <a class="navbar-brand" href="index.php">Location GSI</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <!-- Espace gestionnaire -->
+          <li class="nav-item"><a class="nav-link" href="monCompte.php">Mon compte</a></li>
+
+          <!-- Espace de reservation -->
+          <li class="nav-item"><a class="nav-link" href="reservation.php">Reservation</a></li>
+
+          <!-- info entreprise -->
+          <li class="nav-item"><a class="nav-link" href="nousConnaitre.php">Nous connaitre</a></li>
+
+          <!-- Page de contact -->
+          <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+
+          <!-- Page de déconnexion -->
+          <li class="nav-item"><a class="nav-link" href="deconnexion.php">Déconnexion</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<?php
+}elseif ($_SESSION['user_type'] == 0) {?>
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+    <!-- retour à la page principale -->
+      <a class="navbar-brand" href="index.php">Location GSI</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+          <!-- Espace gestionnaire -->
+          <li class="nav-item"><a class="nav-link" href="alerte.php">Alertes</a></li>
+          <!-- Espace gestionnaire -->
+          <li class="nav-item"><a class="nav-link" href="boiteatache.php">Boite à tache</a></li>
+          <!-- Espace gestionnaire -->
+          <li class="nav-item"><a class="nav-link" href="parcauto.php">Parc Automobile</a></li>
+          <!-- Espace gestionnaire -->
+          <li class="nav-item"><a class="nav-link" href="historique.php">Historique</a></li>
+          <!-- Page de déconnexion -->
+          <li class="nav-item"><a class="nav-link" href="deconnexion.php">Déconnexion</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 <?php
 }
 ?>

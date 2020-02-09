@@ -1,7 +1,26 @@
-<!-- Permet de faire le lien entre le model et la view il sera appelé par la page pour l'affichge -->
+<!-- Permet de faire le lien entre le model et la view il sera appelé par la page pour
+
+// BOOTSTRAP BUTTON INFO
+// class="btn btn-primary">Primary</button>
+// class="btn btn-secondary">Secondary</button>
+// class="btn btn-success">Success</button>
+// class="btn btn-danger">Danger</button>
+// class="btn btn-warning">Warning</button>
+// class="btn btn-info">Info</button>
+// class="btn btn-light">Light</button>
+// class="btn btn-dark">Dark</button>
+// class="btn btn-link">Link</button>
+<?php
+// Start the session
+session_start();
+?>l'affichge -->
+
 
 <?php
+require_once('inscriptionFrontend.php');
+require_once('monCompteFrontend.php');
 require_once('model/frontend.php');
+
 //Fonction d elog teporaire pour avoir une trace supllémentaire lors du débuggage
 function logger($log){
   $fichierAdresse = './log.txt';
@@ -20,100 +39,47 @@ function displayIndex(){
 
     require('view/indexView.php');
 }
+function displayModalOneChoice($t, $tm, $bt, $bc){
+  require('view/modalView.php');
+  $title = $t;
+  $messageText = $tm ;
+  $buttonText = $bt ;
+  $buttonClass = $bc;
 
-// PARTIE INSCRIPTION
-function displayInscription(){
-
-  require_once('view/inscriptionView.php');
-  //on récupère les variables on les met dans le tableau client pour l'ajouter den bas epar la suite avec la fonction addClient
-  if (isset ($_POST['valider'])){
-  $client = array(
-                 'nom_client' => $_POST['nom'],
-                 'prenom_client' => $_POST['prenom'],
-                 //'dateNais' => $_POST['dateNais'],
-                 'email_client' => $_POST['email'],
-                 //'adresse' => $_POST['adresse'],
-                 //'complementAdresse' => $_POST['complementAdresse'],
-                 //'code_postal' => $_POST['codePostal'],
-                // 'mot_de_passe' => $_POST['motDePasse'],
-                 'telephone_client' => $_POST['indicPays'] . $_POST['tel']);
-  }
 }
-
-function displayInscriptionChoix(){
-
-  require_once('view/inscriptionChoixView.php');
-}
-
-function displayInscriptionProfessionnel(){
-
-  require_once('view/inscriptionProfessionnelView.php');
-}
-
-function displayInscriptionParticulier(){
-
-  require_once('view/inscriptionParticulierView.php');
-}
-// FIN PARTIE INSCRIPTION
-
-// PARTIE FAIL/SUCCESS
-function displaySucess(){
-
-  require_once('view/sucessView.php');
-  if (!empty($_SESSION['nom_client']) || !empty($_SESSION['nom_client'])){
-    $personalmessage = "Bonjour " . $_SESSION['nom_client'] . $_SESSION['nom_client'] ;
-  }
-}
-
-function displayFail(){
-
-  require_once('view/failView.php');
-}
-// FIN PARTIE FAIL/SUCCESS
 
 function displayConnexion(){
 
   require('view/connexionView.php');
 
-  if (empty($_POST['pseudo']) || empty($_POST['password']) ){
-    echo '<p>une erreur s\'est produite pendant votre identification.
-          Vous devez remplir tous les champs</p>
-          <p>Cliquez <a href="./connexion.php">ici</a> pour revenir</p>';
+  if (empty($_POST['inputEmail']) || empty($_POST['inputPassword']) ){
+    echo "<script>alert(Votre password ou votre adresse mail n'est pas renseigné);</script>";
   }
   if (isset ($_POST['connexion'])){
     //Verification de la connexion
-    $connexion = array(
-                   'email_client' => $_POST['inputEmail'],
-                   'password' => $_POST['inputPassword'],
-                   'type_client' => $_POST['profil']
-                 );
-    $dconnexion = getClient($connexion);
-  	if ($dconnexion['password'] == md5($_POST['inputPassword'])) // Acces OK !
-  	{
-  	    $_SESSION['nom_client'] = $dconnexion['nom_client'];
-  	    $_SESSION['prenom_client'] = $dconnexion['prenom_client'];
-  	    $_SESSION['type_client'] = $dconnexion['type_client'];
+    $valid = 1;
 
-    }else {?>
-      <script>
-       function redir(){self.location.href="index.php"};
-      </script>
-      <?php
+    logger(crypt($_POST['inputPassword'], 'tutu'));
+    $valid = verifConnexion(crypt($_POST['inputPassword'], 'tutu'), $_POST['inputEmail']);
+    if ($valid == 0) {
+      //on a verif mtn on doit ajouter dans la session les infos
+      $resConnexion = getUser($_POST['inputEmail']);
 
+      $_SESSION['user_name'] = $resConnexion['user_name'];
+      $_SESSION['user_surname'] = $resConnexion['user_surname'];
+      $_SESSION['user_type'] = $resConnexion['user_type'];
+      $_SESSION['user_id'] = $resConnexion['user_id'];
+
+
+      echo "<script> window.location.replace('index.php') </script>";
+
+    }else{
+      echo "<script>
+      alert('Identifiant incorrect');
+      setTimeout(window.location.replace('connexion.php'), 3000);
+      </script>";
     }
-
-    // // Log la date de connexion
-    // date_default_timezone_set('Europe/France');
-    // // Then call the date functions
-    // $date = date('Y-m-d H:i:s');
-    // logDate($_POST['id_client'], $date);
-
   }
-}
-
-function displayGestionnaire(){
-
-    require('view/gestionnaireView.php');
 }
 
 function displayNousConnaitre(){

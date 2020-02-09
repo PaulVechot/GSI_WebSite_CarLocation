@@ -15,7 +15,7 @@ if (isset($_GET['action'])) {
     displayInscriptionParticulier();
   }
   else {
-    echo 'Erreur : action inconnue';
+    displayModalOneChoice('ERREUR','Une erreur inconnue est apparue','Compris', 'btn btn-danger');
   }
 }
 else {

@@ -9,7 +9,8 @@
 }
 
 .bg-image {
-  background-image: url('https://wpamelia.com/wp-content/uploads/2019/02/4k-wallpaper-architecture-background-1308624.jpg');
+  background-image: url('/GSI_WebSite_CarLocation/public/image/connexion_page/roadconnexion.jpeg');
+  /* url('https://wpamelia.com/wp-content/uploads/2019/02/4k-wallpaper-architecture-background-1308624.jpg'); */
   background-size: cover;
   background-position: center;
 }
@@ -110,4 +111,3 @@
     color: #777;
   }
 }
-

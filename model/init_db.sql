@@ -1,74 +1,63 @@
 Create database LocationGSI;
 Use LocationGSI;
 
-DROP TABLE IF EXISTS Client ;
-CREATE TABLE Client (id_client BIGINT AUTO_INCREMENT NOT NULL,
-nom_client VARCHAR(20),
-prenom_client VARCHAR(20),
-birth_date DATE,
-email_client VARCHAR(30),
-telephone_client VARCHAR(15),
-password VARCHAR (20),
-type_client INT,
-PRIMARY KEY (id_client));
+DROP TABLE IF EXISTS User ;
+CREATE TABLE VroomUser (
+  user_id BIGINT AUTO_INCREMENT NOT NULL,
+  user_name VARCHAR(20),
+  user_rs VARCHAR(100),
+  user_surname VARCHAR(20),
+  user_birth_date DATE,
+  user_email VARCHAR(30),
+  user_phone VARCHAR(30),
+  user_password VARCHAR (20),
+  user_type INT,
+  user_adress VARCHAR (50),
+  user_adress1 VARCHAR(30),
+  user_district VARCHAR (5),
+  user_city VARCHAR (5),
+  PRIMARY KEY (user_id)
+);
 
-/* DROP TABLE IF EXISTS Pro ;
-CREATE TABLE Pro (id_pro BIGINT AUTO_INCREMENT NOT NULL,
-rs_pro VARCHAR(20),
-email_pro VARCHAR(30),
-adress_pro VARCHAR (50),
-adress_complement_pro VARCHAR(30),
-code_postal_pro VARCHAR (5),
-ville_pro VARCHAR (5),
-telephone_pro VARCHAR(15),
-password_pro VARCHAR (20),
-PRIMARY KEY (id_pro)); */
+DROP TABLE IF EXISTS Card ;
+CREATE TABLE Card (
+  card_id BIGINT AUTO_INCREMENT NOT NULL,
+  card_name VARCHAR(100),
+  card_owner_name VARCHAR(50),
+  card_number VARCHAR(35),
+  card_csv VARCHAR(3),
+  card_expiration_month VARCHAR(2),
+  card_expiration_year VARCHAR(2),
+  user_id BIGINT,
+  PRIMARY KEY (card_id)
+);
 
-DROP TABLE IF EXISTS Moyen_paiement ;
-CREATE TABLE Moyen_paiement (id_moyen_paiement BIGINT AUTO_INCREMENT NOT NULL,
-type_moyen_paiement VARCHAR(20),
-numero_moyen_paiement VARCHAR(35),
-id_client BIGINT,
-PRIMARY KEY (id_moyen_paiement));
+DROP TABLE IF EXISTS Direct_debit ;
+CREATE TABLE Direct_Debit (
+  direct_debit_id BIGINT AUTO_INCREMENT NOT NULL,
+  direct_debit_name VARCHAR(20),
+  direct_debit_iban VARCHAR(35),
+  direct_debit_bic VARCHAR(120),
+  direct_debit_owner_name VARCHAR(150),
+  user_id BIGINT,
+  PRIMARY KEY (direct_debit_id)
+);
 
-DROP TABLE IF EXISTS Adresse ;
-CREATE TABLE Adresse (id_adresse BIGINT AUTO_INCREMENT NOT NULL,
-adress_client VARCHAR (50),
-adress_complement VARCHAR(30),
-code_postal VARCHAR (5),
-ville VARCHAR (5),
-id_client BIGINT,
-PRIMARY KEY (id_adresse));
-
-DROP TABLE IF EXISTS Vehicule ;
-CREATE TABLE Vehicule (id_vehicule BIGINT AUTO_INCREMENT NOT NULL,
-immatriculation VARCHAR(20),
-marque VARCHAR(30),
-modele VARCHAR(40),
-categorie VARCHAR(15),
-description VARCHAR(1000),
-lien_image VARCHAR(300),
-couleur VARCHAR(15),
-id_reservation BIGINT,
-prix INT,
-
-PRIMARY KEY (id_vehicule));
-
-DROP TABLE IF EXISTS Gestionnaire ;
-CREATE TABLE Gestionnaire (id_gestionnaire BIGINT AUTO_INCREMENT NOT NULL,
-nom_gestionnaire VARCHAR(20),
-prenom_gestionnaire VARCHAR(20),
-code_gestionnaire VARCHAR(20),
-telephone_gestionnaire VARCHAR(15),
-email_gestionnaire VARCHAR(30),
-PRIMARY KEY (id_gestionnaire));
-
-DROP TABLE IF EXISTS Tache ;
-CREATE TABLE Tache (id_tache BIGINT AUTO_INCREMENT NOT NULL,
-nom_tache VARCHAR(12),
-statut_tache VARCHAR(10),
-id_gestionnaire BIGINT,
-PRIMARY KEY (id_tache));
+DROP TABLE IF EXISTS Vehicle ;
+CREATE TABLE Vehicle (
+  vehicle_id BIGINT AUTO_INCREMENT NOT NULL,
+  vehicle_license_plate VARCHAR(20),
+  vehicle_brand VARCHAR(30),
+  vehicle_model VARCHAR(40),
+  vehicle_category VARCHAR(15),
+  vehicle_description VARCHAR(1000),
+  vehicle_image_link VARCHAR(300),
+  vehicle_color VARCHAR(15),
+  vehicle_price_per_day FLOAT,
+  vehicle_price_per_hours FLOAT,
+  booking_id BIGINT,
+  PRIMARY KEY (vehicle_id)
+);
 
 DROP TABLE IF EXISTS Facture ;
 CREATE TABLE Facture (id_facture BIGINT AUTO_INCREMENT NOT NULL,
@@ -76,27 +65,6 @@ date_facture DATE,
 total_ht FLOAT(10),
 id_reservation BIGINT,
 PRIMARY KEY (id_facture));
-
-DROP TABLE IF EXISTS Espace_perso ;
-CREATE TABLE Espace_perso (id_espace_perso BIGINT AUTO_INCREMENT NOT NULL,
-id_titulaire VARCHAR(20),
-login VARCHAR(20),
-password VARCHAR(45),
-PRIMARY KEY (id_espace_perso));
-
-DROP TABLE IF EXISTS Connexion ;
-CREATE TABLE Connexion (id_connexion BIGINT AUTO_INCREMENT NOT NULL,
-heure_connexion DATETIME,
-heure_deconnexion DATETIME,
-id_client BIGINT,
-PRIMARY KEY (id_connexion));
-
-DROP TABLE IF EXISTS Modification ;
-CREATE TABLE Modification (id_modification BIGINT AUTO_INCREMENT NOT NULL,
-provenance_modification VARCHAR(10),
-heure_modification DATETIME,
-id_client_modifie VARCHAR(10),
-PRIMARY KEY (id_modification));
 
 DROP TABLE IF EXISTS Message ;
 CREATE TABLE Message (id_message BIGINT AUTO_INCREMENT NOT NULL,
@@ -106,35 +74,37 @@ id_emetteur_message VARCHAR(10),
 id_destinataire_message VARCHAR(10),
 PRIMARY KEY (id_message));
 
-DROP TABLE IF EXISTS Reservation ;
-CREATE TABLE Reservation (id_reservation BIGINT AUTO_INCREMENT NOT NULL,
-statut_reservation VARCHAR(10),
-date_reservation DATE,
-date_depart DATE,
-date_retour_prevue DATE,
-date_retour_reelle DATE,
-km_depart_ FLOAT(15),
-km_retour FLOAT(15),
-prix_journalier BIGINT(8),
-montant_accompte FLOAT(10),
-id_client BIGINT,
-id_gestionnaire BIGINT,
-PRIMARY KEY (id_reservation));
+DROP TABLE IF EXISTS Booking ;
+CREATE TABLE Booking (
+  booking_id BIGINT AUTO_INCREMENT NOT NULL,
+  booking_status VARCHAR(10),
+  booking_leaving_date DATE,
+  booking_date_depart DATE,
+  booking_planned_return_date DATE,
+  booking_real_return_date DATE,
+  booking_leaving_km FLOAT(15),
+  booking_return_km FLOAT(15),
+  booking_price_per_day BIGINT(8),
+  booking_price_TVA BIGINT(8),
+  booking_price_total FLOAT(10),
+  user_id BIGINT,
+  vehicle_id BIGINT,
+  PRIMARY KEY (booking_id)
+);
 
-DROP TABLE IF EXISTS Historique ;
-CREATE TABLE Historique (id_historique BIGINT AUTO_INCREMENT NOT NULL,
-type_operation DATETIME,
-heure_operation DATETIME,
-provenance_operation VARCHAR(20),
-id_reservation_historisee VARCHAR(10),
-PRIMARY KEY (id_historique));
+DROP TABLE IF EXISTS LLog ;
+CREATE TABLE LLog (
+  log_id BIGINT AUTO_INCREMENT NOT NULL,
+  log_operation_name VARCHAR(50),
+  log_operation_description VARCHAR(500),
+  log_operation_hour DATETIME,
+  user_id BIGINT,
+  PRIMARY KEY (log_id)
+);
 
-ALTER TABLE Moyen_paiement ADD CONSTRAINT FK_Moyen_paiement_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
+ALTER TABLE Direct_debit ADD CONSTRAINT FK_Direct_debit_user_id FOREIGN KEY (user_id) REFERENCES VroomUser (user_id);
+ALTER TABLE Card ADD CONSTRAINT FK_card_user_id FOREIGN KEY (user_id) REFERENCES VroomUser (user_id);
 
-ALTER TABLE Adresse ADD CONSTRAINT FK_Adresse_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
-ALTER TABLE Vehicule ADD CONSTRAINT FK_Vehicule_id_reservation FOREIGN KEY (id_reservation) REFERENCES Reservation (id_reservation);
-ALTER TABLE Tache ADD CONSTRAINT FK_Tache_id_gestionnaire FOREIGN KEY (id_gestionnaire) REFERENCES Gestionnaire (id_gestionnaire);
-ALTER TABLE Facture ADD CONSTRAINT FK_Facture_id_reservation FOREIGN KEY (id_reservation) REFERENCES Reservation (id_reservation);
-ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
-ALTER TABLE Reservation ADD CONSTRAINT FK_Reservation_id_gestionnaire FOREIGN KEY (id_gestionnaire) REFERENCES Gestionnaire (id_gestionnaire);
-ALTER TABLE Connexion ADD CONSTRAINT FK_Connexion_id_client FOREIGN KEY (id_client) REFERENCES Client (id_client);
+ALTER TABLE Booking ADD CONSTRAINT FK_booking_user FOREIGN KEY (user_id) REFERENCES VroomUser (user_id);
+ALTER TABLE Booking ADD CONSTRAINT FK_Vehicle_booking FOREIGN KEY (vehicle_id) REFERENCES Vehicle (vehicle_id);
+ALTER TABLE Vehicle ADD CONSTRAINT FK_booking_vehicle FOREIGN KEY (booking_id) REFERENCES Booking (booking_id);

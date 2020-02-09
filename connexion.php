@@ -1,15 +1,8 @@
 <?php
 require('controller/frontend.php');
 
-if (isset($_GET['action'])) {
-  if ($_GET['action'] == 'connexion') {
-    displaySucess();
-  }
-  else {
-    displayFail();
-  }
-}
-else {
+if (!isset($_POST['email_client'])) {
   displayConnexion();
+
 }
 ?>

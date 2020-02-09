@@ -1,5 +1,5 @@
 
-<?php $title = 'Location GSI - Inscription - Particulier'; ?>
+<?php $title = 'Location GSI - Mon Compte'; ?>
 <?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/.css"; ?>
 
 <?php ob_start(); ?>
@@ -8,71 +8,74 @@
 </br>
 <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 600px;">
-  	<h4 class="card-title mt-3 text-center">Créer un compte Professionnel</h4>
-  	<p class="text-center">Réservez dès maintenant avec votre compte gratuit</p>
+  	<h4 class="card-title mt-3 text-center">Info Personnel</h4>
 
       <form method="post">
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="nom" class="form-control" placeholder="Nom *" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30" >
+              <input name="nom" class="form-control" value="<?php logger($resUser['user_name']."toto"); echo $resUser['user_name']?>" placeholder="<?php echo $resUser['user_name']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30" >
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="prenom" class="form-control" placeholder="Prénom *" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
+              <input name="prenom" class="form-control" value="<?php logger($resUser['user_name']."toto"); echo $resUser['user_surname']?>" placeholder="<?php echo $resUser['user_surname']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
+          </div> <!-- form-group// -->
+
+        </br>
+        </br>
+
+
+          <div class="form-group input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+               </div>
+              <input name="rs" class="form-control" value="<?php echo $resUser['user_rs']?>" placeholder="<?php echo $resUser['user_rs']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="60">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="rs" class="form-control" placeholder="Raison Social de l'entreprise*" type="text" required pattern="^[A-Za-z '-]+$" maxlength="60">
-          </div> <!-- form-group// -->
-
-          <div class="form-group input-group">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-               </div>
-              <input name="birth_date" class="form-control" placeholder="Date de naissance *" type="text">
+              <input name="birth_date" class="form-control" value="<?php echo $resUser['user_birth_date']?>" placeholder="<?php echo $resUser['user_birth_date']?>" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                </div>
-              <input name="email_client" class="form-control" placeholder="Adresse mail *" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              <input name="email_client" class="form-control" value="<?php echo $resUser['user_email']?>" placeholder="<?php echo $resUser['user_email']?>" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		  <div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="adresse" class="form-control" placeholder="Adresse" type="text">
+          <input name="adresse" class="form-control" value="<?php echo $resUser['user_adress']?>" placeholder="<?php echo $resUser['user_adress']?>" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
   		      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
               </div>
-              <input name="complementAdresse" class="form-control" placeholder="Complément d'adresse" type="text">
+              <input name="complementAdresse" class="form-control" value="<?php echo $resUser['user_adress1']?>" placeholder="<?php echo $resUser['user_adress1']?>" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="codePostal" class="form-control" placeholder="Code postal" type="text">
+          <input name="codePostal" class="form-control" value="<?php echo $resUser['user_district']?>" placeholder="<?php echo $resUser['user_district']?>" type="text">
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
   		<div class="input-group-prepend">
   		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
   		 </div>
-          <input name="ville" class="form-control" placeholder="Ville" type="text">
+          <input name="ville" class="form-control" value="<?php echo $resUser['user_city']?>" placeholder="<?php echo $resUser['user_city']?>" type="text">
           </div> <!-- form-group// -->
 
       <div class="form-group input-group">
@@ -89,7 +92,7 @@
           <option value="377">+377</option>
           <option value="49">+49</option>
   		</select>
-      	<input name="tel" class="form-control" placeholder="Téléphone" required pattern=".{10,}" type="text">
+      	<input name="tel" class="form-control" value="<?php echo $resUser['user_phone']?>" placeholder="<?php echo $resUser['user_phone']?>" required pattern=".{10,}" type="text">
       </div> <!-- form-group// -->
 
       <div class="form-group input-group">
@@ -106,9 +109,8 @@
       </div> <!-- form-group// -->
      <!-- bouton de validation -->
       <div class="form-group">
-        <button type="submit" name="valider" class="btn btn-primary btn-block">Création du compte  </button>
-      </div> <!-- form-group// -->
-      <p class="text-center">J'ai déjà un compte!<a href="connexion.php">  Connexion</a> </p>
+        <button type="submit" name="modification" class="btn btn-primary btn-block">Modifier ces informations </button>
+
   </form>
   </article>
 </div>

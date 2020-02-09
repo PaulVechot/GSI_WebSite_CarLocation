@@ -19,16 +19,16 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
     <!-- Un affichage d'une voiture -->
     <?php
     $resAllCar = getAllCar();
-    while ($dAllCar = $resAllCar->fetch()){
-    //logger('getallcar fetch in while\n\n'. $d)?>
+    while ($dAllCar = $resAllCar->fetch()){?>
+
     <div class="col-lg-6 portfolio-item">
      <div class="card h-100">
-       <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><img class="card-img-top" src="<?php echo $dAllCar['lien_image']?>" alt=""></a>
+       <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['vehicle_id']?>"><img class="card-img-top" src="<?php echo $dAllCar['vehicle_image_link']?>" alt=""></a>
        <div class="card-body">
          <h4 class="card-title">
-           <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['id_vehicule']?>"><?php echo $dAllCar['marque'] ." ". $dAllCar['modele'] ." ". $dAllCar['couleur'] ?></a>
+           <a href="reservation.php?action=listvehicule&amp;id=<?php echo $dAllCar['vehicle_id']?>"><?php echo $dAllCar['vehicle_brand'] ." ". $dAllCar['vehicle_model'] ." ". $dAllCar['vehicle_color'] ?></a>
          </h4>
-         <p class="card-text"><?php echo $dAllCar['description']?></p>
+         <p class="card-text"><?php echo $dAllCar['vehicle_description']?></p>
        </div>
      </div>
     </div>
@@ -37,33 +37,6 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
 </div>
 
 
-
- <!-- Pagination
- <ul class="pagination justify-content-center">
-   <li class="page-item">
-     <a class="page-link" href="#" aria-label="Previous">
-       <span aria-hidden="true">&laquo;</span>
-       <span class="sr-only">Previous</span>
-     </a>
-   </li>
-   <li class="page-item">
-     <a class="page-link" href="#">1</a>
-   </li>
-   <li class="page-item">
-     <a class="page-link" href="#">2</a>
-   </li>
-   <li class="page-item">
-     <a class="page-link" href="#">3</a>
-   </li>
-   <li class="page-item">
-     <a class="page-link" href="#" aria-label="Next">
-       <span aria-hidden="true">&raquo;</span>
-       <span class="sr-only">Next</span>
-     </a>
-   </li>
- </ul>
-
--->
  <!-- /.container -->
  <?php $content = ob_get_clean(); ?>
 

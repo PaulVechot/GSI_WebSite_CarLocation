@@ -2,11 +2,11 @@
 
 <?php $title = 'Location GSI - Accueil'; ?>
 <?php $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css"; ?>
-
+<?php $imageSize = "200px"; ?>
 
 <?php ob_start(); ?>
 <header>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
      <ol class="carousel-indicators">
        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -44,7 +44,7 @@
        <span class="sr-only">Next</span>
      </a>
    </div>
- </header>
+</header>
 
  <!-- Content -->
  <div class="container">
@@ -56,7 +56,9 @@
    <div class="row">
      <div class="col-lg-4 col-sm-6 portfolio-item">
        <div class="card h-100">
-         <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/satisfaction.svg" alt=""></a>
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
+           <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/satisfaction.svg" alt=""></a>
+         </div>
          <div class="card-body">
            <h4 class="card-title">
             Satisfaction client
@@ -66,8 +68,10 @@
        </div>
      </div>
      <div class="col-lg-4 col-sm-6 portfolio-item">
-       <div class="card h-100">
-         <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/partner.svg" alt=""></a>
+       <div class="card h-1050">
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
+           <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/partner.svg" alt=""></a>
+         </div>
          <div class="card-body">
            <h4 class="card-title">
             Responsabilité
@@ -78,7 +82,9 @@
      </div>
      <div class="col-lg-4 col-sm-6 portfolio-item">
        <div class="card h-100">
-         <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/value.svg" alt=""></a>
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
+           <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/value.svg" alt=""></a>
+         </div>
          <div class="card-body">
            <h4 class="card-title">
              Qualité
@@ -89,7 +95,9 @@
      </div>
      <div class="col-lg-4 col-sm-6 portfolio-item">
        <div class="card h-100">
-         <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/map.svg" alt=""></a>
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
+           <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/map.svg" alt=""></a>
+         </div>
          <div class="card-body">
            <h4 class="card-title">
              Proximité
@@ -100,7 +108,9 @@
      </div>
      <div class="col-lg-4 col-sm-6 portfolio-item">
        <div class="card h-100">
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
          <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/respect.svg" alt="" ></a>
+       </div>
          <div class="card-body">
            <h4 class="card-title">
             Respect
@@ -111,7 +121,9 @@
      </div>
      <div class="col-lg-4 col-sm-6 portfolio-item">
        <div class="card h-100">
-         <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/solution.svg" alt=""></a>
+         <div class="mx-auto" style="width: <?= $imageSize ?>;">
+           <a href="#"><img class="card-img-top" src="public/image/accueil_valeurs/solution.svg" alt=""></a>
+         </div>
          <div class="card-body">
            <h4 class="card-title">
             Integrité
@@ -121,6 +133,53 @@
        </div>
      </div>
    </div>
+   <!-- Customer Review Section -->
+     <h2><br><b></b>Retour d'utilisateur</b></h2></br></h2>
+   </br>
+   </br>
+   <div class="row">
+     <!-- Team Member 1 -->
+     <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-0 shadow">
+         <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+         <div class="card-body text-center">
+           <h5 class="card-title mb-0">Jean Kevin</h5>
+           <div class="card-text text-black-50">Les voitures trop bien et moi j'aime bien quand c'est trop bien! Vive Vroom</div>
+         </div>
+       </div>
+     </div>
+     <!-- Team Member 2 -->
+     <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-0 shadow">
+         <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
+         <div class="card-body text-center">
+           <h5 class="card-title mb-0">Adèle Dupuis</h5>
+           <div class="card-text text-black-50">J'adore les voitures. Elle sont vraiment extraordinaire vivement que l'on puise aller sur la lune avec. Les voitures sont un grand pas pour l'homme et en tant que podologue je m'y connais! Vive les crepes</div>
+         </div>
+       </div>
+     </div>
+     <!-- Team Member 3 -->
+     <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-0 shadow">
+         <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
+         <div class="card-body text-center">
+           <h5 class="card-title mb-0">Jack Langue</h5>
+           <div class="card-text text-black-50">Mon dieu! C'est vraiment super ce site, j'en ai parlé à toute ma famille. Merci encore Vroom!!</div>
+         </div>
+       </div>
+     </div>
+     <!-- Team Member 4 -->
+     <div class="col-xl-3 col-md-6 mb-4">
+       <div class="card border-0 shadow">
+         <img src="https://source.unsplash.com/ZI6p3i9SbVU/500x350" class="card-img-top" alt="...">
+         <div class="card-body text-center">
+           <h5 class="card-title mb-0">Lolita Bell</h5>
+           <div class="card-text text-black-50">Super Site on trouve tout ce qu'il faut ou il faut! Bravo aux developpeurs</div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- /.row -->
   </div>
 <?php $content = ob_get_clean(); ?>
 
