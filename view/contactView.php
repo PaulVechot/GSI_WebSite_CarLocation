@@ -22,20 +22,20 @@
       <div class="col-lg-4 mb-4">
         <h3>Contact Details</h3>
         <p>
-          3481 Melrose Place
-          <br>Beverly Hills, CA 90210
+          Californie
+          <br>Great Avenue
           <br>
         </p>
         <p>
-          <abbr title="Phone">P</abbr>: (123) 456-7890
+          <abbr title="Phone">Telephone</abbr>: 06 47 85 55 82
         </p>
         <p>
-          <abbr title="Email">E</abbr>:
-          <a href="mailto:paul.vechot@gmail.com.com">name@example.com
+          <abbr title="Email">Email</abbr>:
+          <a href="mailto:paul.vechot@gmail.com.com">paul.vechot@gmail.com
           </a>
         </p>
         <p>
-          <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM
+          <abbr title="Hours">Horraire</abbr>: Lundi- Vendredi: 9h - 21h
         </p>
       </div>
     </div>
@@ -74,7 +74,7 @@
           </div>
           <div id="success"></div>
           <!-- For success/fail messages -->
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Envoyer</button>
         </form>
       </div>
 

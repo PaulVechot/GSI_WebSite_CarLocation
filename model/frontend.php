@@ -1,6 +1,7 @@
 <?php
 
 require_once('conf.php');
+require_once('controller/frontend.php');
 
 // CLIENT
 // TABLE MEMO
@@ -23,6 +24,8 @@ require_once('conf.php');
 
 
 function addBooking($booking){
+	logger('bddok');
+
 	$req = $GLOBALS['c']->prepare(
 		'INSERT INTO Booking(
 			booking_id,
@@ -38,7 +41,7 @@ function addBooking($booking){
 			booking_price_TVA,
 			booking_price_total,
 			user_id,
-			vehicle_id,
+			vehicle_id
 		)
 		VALUES(
 			0,
@@ -57,6 +60,7 @@ function addBooking($booking){
 			:vehicle_id
 		)
 	');
+		$req->execute($booking);
 }
 
 	function updateBooking($booking){

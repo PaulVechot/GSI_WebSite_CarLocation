@@ -110,7 +110,7 @@ elseif($_SESSION['user_type'] != 0) {?>
           <!-- Espace gestionnaire -->
           <li class="nav-item"><a class="nav-link" href="boiteatache.php">Boite à tache</a></li>
           <!-- Espace gestionnaire -->
-          <li class="nav-item"><a class="nav-link" href="parcauto.php">Parc Automobile</a></li>
+          <li class="nav-item"><a class="nav-link" href="reservation.php">Parc Automobile</a></li>
           <!-- Espace gestionnaire -->
           <li class="nav-item"><a class="nav-link" href="historique.php">Historique</a></li>
           <!-- Page de déconnexion -->

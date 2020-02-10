@@ -58,7 +58,7 @@ require_once('model/frontend.php');
 
 
   function displayMonCompteHistoConsultation(){
-    require('view/monCompteView.php');
+    require('view/monCompteHistoConsultationView.php');
   }
 
   function displayMonCompteChoix(){

@@ -38,8 +38,8 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
           <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-calendar"></i></span>
            </div>
-           <label class="col-sm-2 control-label">Durée de location</label>
-          <input name="returndate" class="form-control" type="text" maxlength="30">
+           <label class="col-sm-2 control-label">Date de Retour</label>
+          <input name="returndate" class="form-control" type="date" maxlength="30">
       </div> <!-- form-group// -->
 
     </ol>

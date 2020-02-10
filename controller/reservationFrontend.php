@@ -29,12 +29,12 @@ function displayReservationInterface(){
       $valid = 0;
       $err = ("Le champ date est nul");
     }
-    logger($_POST['startdate']-$_POST['returndate']);
-    //$diffdate = $_POST['startdate']->diff($_POST['returndate'])->format("%a");
-    if($diffdate>=0){
-      $valid = 0;
-      $err = ("Choix de date impossible");
-    }
+      //$diffdate = $_POST['startdate']->diff($_POST['returndate'])->format("%a");
+    //verif avec la date du jour
+    // if($diffdate>=0){
+    //   $valid = 0;
+    //   $err = ("Choix de date impossible");
+    // }
     //verif resa
     $vbooking = verifBookingStatusForVehicle($_GET['id']);
     if($vbooking != 1){
@@ -42,7 +42,9 @@ function displayReservationInterface(){
       $err = ("Cette voiture est déja reservé");
     }
     //on ajouter
+    logger($valid.'test');
     if ($valid != 0) {
+      $priceperday =0;
       //on calcul prix
       if($_POST['radio'] == 'simple'){
         $priceperday = $dCar['vehicle_price_per_day'];
@@ -54,7 +56,10 @@ function displayReservationInterface(){
         $priceperday = $dCar['vehicle_price_per_day']+100;
       }
 
-      $totalprice = $diffdate*$priceperday;
+      $totalprice = $_POST['returndate']*$priceperday;
+
+      //$booking_status = "Attente";
+
 
       $booking = array(
         'booking_status' => "Attente",
@@ -71,8 +76,9 @@ function displayReservationInterface(){
         'user_id' => $_SESSION['user_id'],
         'vehicle_id' => $_GET['id']
       );
-      updateBooking($booking);
-      echo "<script> window.location.replace('index.php') </script>";
+      addBooking($booking);
+      logger($valid.'add');
+      echo "<script> window.location.replace('monCompte.php?action=histoConsultation') </script>";
     }else {
       echo "<script>alert('$err');</script>";
     }
