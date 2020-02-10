@@ -78,6 +78,7 @@ DROP TABLE IF EXISTS Booking ;
 CREATE TABLE Booking (
   booking_id BIGINT AUTO_INCREMENT NOT NULL,
   booking_status VARCHAR(10),
+  booking_type VARCHAR(30),
   booking_leaving_date DATE,
   booking_date_depart DATE,
   booking_planned_return_date DATE,

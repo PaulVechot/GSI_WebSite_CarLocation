@@ -13,13 +13,19 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/connexionSucess.css
   <div class="container h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
-        <h1 class="font-weight-light">Bienvenue au sein de notre maison</h1>
+        <h1 class="font-weight-light">Vous etes sur votre espace personnel</h1>
         <br>
-        <p class="lead">Selectionner votre profil</p>
+        <p class="lead">Selectionner votre action</p>
         <form>
-          <input type="button" value="Modification carte bancaire" class="btn btn-secondary btn-lg btn-block" onclick="window.location.href='monCompte.php?action=carteModif'" />
+
+          <input type="button" value="Ajout Carte Bancaire" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='monCompte.php?action=carteAjout'" />
+
+          <input type="button" value="Modification Carte Bancaire" class="btn btn-secondary btn-lg btn-block" onclick="window.location.href='monCompte.php?action=carteModif'" />
+
           <input type="button" value="Modification Info Personnel" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='monCompte.php?action=infoPersoModif'" />
+
           <input type="button" value="Consultation Historique" class="btn btn-secondary btn-lg btn-block" onclick="window.location.href='monCompte.php?action=histoConsultation'" />
+
         </form>
       </div>
     </div>

@@ -1,7 +1,6 @@
 <?php
 require('controller/frontend.php');
 
-
 if (isset($_GET['action'])) {
   if ($_GET['action'] == 'listvehicule') {
       if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -11,7 +10,11 @@ if (isset($_GET['action'])) {
     }
   }
   elseif ($_GET['action'] == 'reservationInterface') {
-    displayReservationInterface();
+      if (isset($_GET['id']) && $_GET['id'] > 0) {
+        displayReservationInterface();
+      }else{
+        echo 'Erreur : ID non conforme';
+      }
   }
   else {
     echo 'Erreur : aucun action envoyé';

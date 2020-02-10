@@ -21,7 +21,80 @@ require_once('conf.php');
 //   PRIMARY KEY (id_client)
 // );
 
-function addClient($client){
+
+function addBooking($booking){
+	$req = $GLOBALS['c']->prepare(
+		'INSERT INTO Booking(
+			booking_id,
+			booking_status,
+			booking_type,
+			booking_leaving_date,
+			booking_date_depart,
+			booking_planned_return_date,
+			booking_real_return_date,
+			booking_leaving_km,
+			booking_return_km,
+			booking_price_per_day,
+			booking_price_TVA,
+			booking_price_total,
+			user_id,
+			vehicle_id,
+		)
+		VALUES(
+			0,
+			:booking_status,
+			:booking_type,
+			:booking_leaving_date,
+			:booking_date_depart,
+			:booking_planned_return_date,
+			:booking_real_return_date,
+			:booking_leaving_km,
+			:booking_return_km,
+			:booking_price_per_day,
+			:booking_price_TVA,
+			:booking_price_total,
+			:user_id,
+			:vehicle_id
+		)
+	');
+}
+
+	function updateBooking($booking){
+		$req = $GLOBALS['c']->prepare(
+			'UPDATE Card SET
+				booking_id = :booking_id,
+				booking_status = :booking_status,
+				booking_type = :booking_type,
+				booking_leaving_date = :booking_leaving_date,
+				booking_date_depart = :booking_date_depart,
+				booking_planned_return_date = :booking_planned_return_date,
+				booking_real_return_date = :booking_real_return_date,
+				booking_leaving_km = :booking_leaving_km,
+				booking_return_km =:booking_return_km,
+				booking_price_per_day = :booking_price_per_day,
+				booking_price_TVA = :booking_price_TVA,
+				booking_price_total = :booking_price_total,
+				user_id = :user_id,
+				vehicle_id = :vehicle_id
+			');
+	}
+
+	function verifBookingStatusForVehicle($idcar){
+		$req = $GLOBALS['c']->prepare('SELECT * FROM booking WHERE user_id = :user_id');
+		$req->execute(['user_id' => $idcar]);
+		$res = $req->fetch();
+
+		if ($res["booking_status"] <> "Disponible"){
+			//on a trouvé
+			$return = 1;
+		}else {
+			//on a rien trouvé
+			$return = 0;
+		}
+		return $return;
+	}
+
+function addUser($client){
 	$req = $GLOBALS['c']->prepare(
 		'INSERT INTO VroomUser(
 			user_id,
@@ -57,6 +130,72 @@ function addClient($client){
 
 	$req->execute($client);
 }
+
+
+function verifCard($cardnum){
+	$req = $GLOBALS['c']->prepare('SELECT * FROM Card WHERE card_number = :cardnum');
+	$req->execute(['cardnum' => $cardnum]);
+	$res = $req->fetch();
+
+	if ($res["card_number"] <> ""){
+		//on a trouvé
+		$return = 0;
+	}else {
+		//on a rien trouvé
+		$return = 1;
+	}
+	return $return;
+}
+
+function updateCard($user){
+	$req = $GLOBALS['c']->prepare(
+		'UPDATE Card SET
+		card_name = :card_name,
+		card_owner_name = :card_owner_name,
+		card_number = :card_number,
+		card_csv = :card_csv,
+		card_expiration_month = :card_expiration_month,
+		card_expiration_year = :card_expiration_year,
+		user_id = :user_id
+	');
+	$req->execute($user);
+}
+
+function getCard($iduser){
+	$req = $GLOBALS['c']->prepare('SELECT *	FROM Card WHERE user_id = :iduser');
+	$req->execute(['iduser' => $iduser]);
+	$resConnexion = $req->fetch();
+	return $resConnexion;
+}
+
+function addCard($card){
+	$req = $GLOBALS['c']->prepare(
+		'INSERT INTO Card(
+			card_id,
+			card_name,
+			card_owner_name,
+			card_number,
+			card_csv,
+			card_expiration_month,
+			card_expiration_year,
+			user_id
+		)
+		VALUES(
+			0,
+			:card_name,
+			:card_owner_name,
+			:card_number,
+			:card_csv,
+			:card_expiration_month,
+			:card_expiration_year,
+			:user_id
+		)
+	');
+
+	$req->execute($card);
+}
+
+
 // Connexion management
 function getUser($email){
 	$req = $GLOBALS['c']->prepare('SELECT *	FROM VroomUser WHERE user_email = :user_email');

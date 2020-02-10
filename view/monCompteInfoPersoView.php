@@ -15,14 +15,14 @@
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="nom" class="form-control" value="<?php logger($resUser['user_name']."toto"); echo $resUser['user_name']?>" placeholder="<?php echo $resUser['user_name']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30" >
+              <input name="nom" class="form-control" value="<?php echo $resUser['user_name']?>" placeholder="<?php echo $resUser['user_name']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30" >
           </div> <!-- form-group// -->
 
           <div class="form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                </div>
-              <input name="prenom" class="form-control" value="<?php logger($resUser['user_name']."toto"); echo $resUser['user_surname']?>" placeholder="<?php echo $resUser['user_surname']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
+              <input name="prenom" class="form-control" value="<?php echo $resUser['user_surname']?>" placeholder="<?php echo $resUser['user_surname']?>" type="text" required pattern="^[A-Za-z '-]+$" maxlength="30">
           </div> <!-- form-group// -->
 
         </br>

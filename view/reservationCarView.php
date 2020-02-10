@@ -30,7 +30,7 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
     <!-- Content principal -->
     <div class="col-md-4">
       <h3 class="my-3">Description de la voiture</h3>
-      <p><?php echo $dCar['description']?></p>
+      <p><?php echo $dCar['vehicle_description']?></p>
       <h3 class="my-3">Détails de la voiture</h3>
       <ul>
         <li>Immatriculation: <?php echo $dCar['vehicle_license_plate']?></li>
@@ -40,7 +40,7 @@ $customPageStylesheet = "/GSI_WebSite_CarLocation/public/css/modern-business.css
         <li>Couleur: <?php echo $dCar['vehicle_color']?></li>
       </ul>
       <!-- Bouton je reserve -->
-      <button class="button" style="vertical-align:middle"><span>Je reserve </span></button>
+      <button class="button" style="vertical-align:middle" onclick="window.location.href = 'reservation.php?action=reservationInterface&amp;id=<?php echo $dCar['vehicle_id']?>';"><span>Je reserve </span></button>
     </div>
   </div>
 

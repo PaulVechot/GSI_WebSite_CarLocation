@@ -1,9 +1,3 @@
-<!-- Permet de faire le lien entre le model et la view il sera appelé par la page pour
-<?php
-// Start the session
-session_start();
-?>l'affichge -->
-
 
 <?php
 require_once('frontend.php');
@@ -64,7 +58,6 @@ function inscription(){
       $valid = 0;
       $err = "La confirmation du mot de passe ne correspond pas";
     }
-    logger($valid);
     if ($valid != 0) {
       $mdp = crypt(trim($_POST['motDePasse']), "tutu");
       $client = array(
@@ -81,10 +74,9 @@ function inscription(){
         'user_district' => $_POST['codePostal'],
         'user_city' => $_POST['ville']
       );
-      addClient($client);
+      addUser($client);
       //LLOG
       ////$date_creation_compte = date('Y-m-d H:i:s'
-      logger("testeeeee");
       echo "<script> window.location.replace('index.php') </script>";
     }else {
       logger('rate');
